@@ -5,7 +5,7 @@ import btnClick from './js/btnClick'
 const root = document.getElementById('root');
 
 const p = document.createElement('p')
-p.innerHTML = '文本'
+p.innerHTML = '文本第一个还不错3333ss'
 root.appendChild(p)
 
 const img = document.createElement('img');

@@ -1,11 +1,32 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin')
+
+const outputPath = path.resolve(__dirname, './dist');
 
 module.exports = {
-    entry: './src/index.js',
+    mode: 'development',
+    devtool: 'inline-source-map',// 生产环境应该屏蔽
+    entry: {
+        index: './src/index.js',
+    },
+    devServer:{
+        contentBase: outputPath,// 热重载，监听目录
+        compress: true,
+        port: 9000,
+    },
     output:{
         filename: '[name].chrunk.js',
-        path: path.resolve(__dirname, './src/dist')
+        path: outputPath,
+        clean: true,// 每次编译都清除`dist/`文件夹
     },
+    plugins:[
+        new HtmlWebpackPlugin({
+            template: './src/index.html',// 使用模板
+            scriptLoading: 'blocking',// 禁用<script defer>
+        }),
+        new WebpackManifestPlugin()
+    ],
     module:{
         rules:[
             {
