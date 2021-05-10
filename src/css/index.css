@@ -1,0 +1,12 @@
+p {
+    color: red;
+    font-size: 16px;
+}
+.img_phone{
+    width: 50px;
+}
+
+.div_bg {
+    height: 100px;
+    background: url('../images/product.png') 100px 100px;
+}
