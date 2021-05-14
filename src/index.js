@@ -1,6 +1,9 @@
 import './css/index.css'
 import phone_img from './images/switch.png'
 import btnClick from './js/btnClick'
+import {sum} from './js/sum';
+
+sum();// 测试代码
 
 const root = document.getElementById('root');
 
