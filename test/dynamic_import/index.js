@@ -1,0 +1,1 @@
+const sum = () => console.log('xxxx')

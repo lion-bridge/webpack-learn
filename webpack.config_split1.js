@@ -1,3 +1,5 @@
+// 代码分离，entry方式
+
 
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -10,18 +12,24 @@ module.exports = {
     devtool: 'inline-source-map',// 生产环境应该屏蔽
     entry: {
         index: './src/index.js',
+        sum:'./src/js/sum.js',
+        shared: './src/js/Subject.js'
     },
     devServer: {
         contentBase: outputPath,// 热重载，监听目录
         compress: true,
         open: true,
-        port: 3002,
     },
     output: {
         filename: '[name].chrunk.js',
         path: outputPath,
         clean: true,// 每次编译都清除`dist/`文件夹
         publicPath: '/'
+    },
+    optimization: { // 代码分离
+        splitChunks:{
+            chunks: 'all',
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
