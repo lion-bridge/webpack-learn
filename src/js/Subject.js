@@ -8,6 +8,7 @@ export const Subject = (function(){
         cache[type].push(ob);
     }
     const _notifyObserver = function(cache, type, ...args){
+        console.log('type=',type)
         if (cache[type]){
             cache[type].forEach((cb, i) => {
                 cb && cb.apply(cb, args)
